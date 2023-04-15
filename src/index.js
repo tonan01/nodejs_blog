@@ -1,18 +1,31 @@
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
-// import { handlebars } from "express-handlebars";
-const handlebars = require("express-handlebars");
+const handlebars = require("express-handlebars").engine;
 const app = express();
 const port = 3000;
 
-//HTTP loger
+app.use(express.static(path.join(__dirname, "public")));
+
+//HTTP log
 app.use(morgan("combined"));
 
 //Templates engine
-app.engine("handlebars", handlebars());
-app.set("view engine", "handlebars");
+app.engine(
+  "hbs",
+  handlebars({
+    extname: ".hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources/views"));
+
 app.get("/", (req, res) => {
   res.render("home");
+});
+
+app.get("/news", (req, res) => {
+  res.render("news");
 });
 
 app.listen(port, () => {
