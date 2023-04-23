@@ -1,0 +1,35 @@
+<div class="m-4">
+  <form method="post" action="/courses/store">
+    <div class="form-group m-2">
+      <label for="name">Tên khóa học</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{course.name}}"
+        id="name"
+        name="name"
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="disc">Mô tả khóa học</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+      >{{course.description}}</textarea>
+    </div>
+    <div class="form-group m-2">
+      <label for="videoid">Video Id</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{course.videoid}}"
+        id="videoid"
+        name="videoid"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Luu khóa học</button>
+  </form>
+</div>
